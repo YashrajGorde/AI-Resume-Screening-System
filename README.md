@@ -25,5 +25,3 @@ No backend or package installation is required.
 3. Upload one or more resume PDF/text files, or use the sample resumes.
 4. Click **Screen Resumes**.
 5. Review ranked candidates, matched skills, missing skills, and analytics.
-
-To See the Project running here file:///C:/Users/Dell/Documents/Codex/2026-05-16/built-a-project-in-which-the/index.html

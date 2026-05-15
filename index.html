@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Resume Screening System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="control-panel" aria-label="Screening controls">
+        <div class="brand-block">
+          <p class="eyebrow">Recruiter Workspace</p>
+          <h1>AI Resume Screening System</h1>
+          <p>
+            Rank applicants against a job description using NLP-style skill
+            matching, keyword relevance, and live hiring analytics.
+          </p>
+        </div>
+
+        <section class="input-section">
+          <div class="section-heading">
+            <h2>Job Description</h2>
+            <button id="loadSampleJob" class="ghost-button" type="button">
+              Load Sample
+            </button>
+          </div>
+          <label class="upload-box compact-upload" for="jdFile">
+            <span>Upload JD file</span>
+            <small>.pdf, .txt, .md, .csv, or text-based documents</small>
+          </label>
+          <input id="jdFile" type="file" accept=".pdf,.txt,.md,.csv,.rtf" />
+          <div id="jdFileStatus" class="file-list" aria-live="polite"></div>
+          <textarea
+            id="jobDescription"
+            placeholder="Paste the role requirements, responsibilities, tools, and must-have skills..."
+          ></textarea>
+        </section>
+
+        <section class="input-section">
+          <div class="section-heading">
+            <h2>Resumes</h2>
+            <button id="loadSampleResumes" class="ghost-button" type="button">
+              Use Samples
+            </button>
+          </div>
+          <label class="upload-box" for="resumeFiles">
+            <span>Upload resume files</span>
+            <small>.pdf, .txt, .md, .csv, or text-based documents</small>
+          </label>
+          <input id="resumeFiles" type="file" multiple accept=".pdf,.txt,.md,.csv,.rtf" />
+          <div id="fileList" class="file-list" aria-live="polite"></div>
+        </section>
+
+        <button id="screenButton" class="primary-button" type="button">
+          Screen Resumes
+        </button>
+      </aside>
+
+      <section class="dashboard" aria-label="Recruiter dashboard">
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow">Real-Time Analytics</p>
+            <h2>Candidate Ranking Dashboard</h2>
+          </div>
+          <div id="statusPill" class="status-pill">Waiting for resumes</div>
+        </header>
+
+        <section class="metrics-grid" aria-label="Screening metrics">
+          <article class="metric-card">
+            <span>Total Resumes</span>
+            <strong id="totalResumes">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>Average Match</span>
+            <strong id="averageMatch">0%</strong>
+          </article>
+          <article class="metric-card">
+            <span>Top Candidate</span>
+            <strong id="topCandidate">-</strong>
+          </article>
+          <article class="metric-card">
+            <span>Skill Coverage</span>
+            <strong id="skillCoverage">0%</strong>
+          </article>
+        </section>
+
+        <section class="content-grid">
+          <div class="ranking-panel">
+            <div class="panel-heading">
+              <h3>Ranked Candidates</h3>
+              <span id="rankingCount">0 screened</span>
+            </div>
+            <div id="candidateList" class="candidate-list">
+              <div class="empty-state">
+                Add a job description and resumes to see ranked candidates.
+              </div>
+            </div>
+          </div>
+
+          <div class="insights-panel">
+            <div class="panel-heading">
+              <h3>Match Accuracy</h3>
+              <span id="accuracyLabel">Live score distribution</span>
+            </div>
+            <div id="scoreChart" class="score-chart" aria-label="Candidate score chart"></div>
+
+            <div class="panel-heading compact">
+              <h3>Required Skills</h3>
+              <span id="requiredSkillCount">0 detected</span>
+            </div>
+            <div id="skillCloud" class="skill-cloud"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
